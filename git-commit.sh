@@ -11,5 +11,5 @@ git push -u origin main"
 git push -u origin main
 
 echo "-------------------------------------------------------------------------
-git log"
-git log
+git log -1"
+git log -1
