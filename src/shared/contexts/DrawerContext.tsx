@@ -1,43 +1,43 @@
 import { FC, ReactNode, createContext, useCallback, useContext, useState } from 'react';
 
 interface IDrawerOption {
-    path: string;
-    icon: string;
-    label: string;
+  path: string;
+  icon: string;
+  label: string;
 }
 
 interface IDrawerContextData {
-    isDrawerOpen: boolean;
-    toggleDrawerOpen: () => void;
-    drawerOptions: IDrawerOption[];
-    setDrawerOptions: (newDrawerOptions: IDrawerOption[]) => void;
+  isDrawerOpen: boolean;
+  toggleDrawerOpen: () => void;
+  drawerOptions: IDrawerOption[];
+  setDrawerOptions: (newDrawerOptions: IDrawerOption[]) => void;
 }
 
 const DrawerContext = createContext({} as IDrawerContextData);
 
 export const useDrawerContext = () => {
-    return useContext(DrawerContext);
+  return useContext(DrawerContext);
 };
 
 interface IDrawerProviderProps {
-    children: ReactNode
+  children: ReactNode
 }
 
 export const DrawerProvider: FC<IDrawerProviderProps> = ({ children }) => {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [drawerOptions, setDrawerOptions] = useState<IDrawerOption[]>([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [drawerOptions, setDrawerOptions] = useState<IDrawerOption[]>([]);
 
-    const handleSetDrawerOptions = useCallback((newDrawerOptions: IDrawerOption[]) => {
-        setDrawerOptions(newDrawerOptions);
-    }, []);
+  const handleSetDrawerOptions = useCallback((newDrawerOptions: IDrawerOption[]) => {
+    setDrawerOptions(newDrawerOptions);
+  }, []);
 
-    const toggleDrawerOpen = useCallback(() => {
-        setIsDrawerOpen(oldDrawerOpen => !oldDrawerOpen);
-    }, []);
+  const toggleDrawerOpen = useCallback(() => {
+    setIsDrawerOpen(oldDrawerOpen => !oldDrawerOpen);
+  }, []);
 
-    return (
-        <DrawerContext.Provider value={{ isDrawerOpen, drawerOptions, toggleDrawerOpen, setDrawerOptions: handleSetDrawerOptions }}>
-            {children}
-        </DrawerContext.Provider>
-    );
+  return (
+    <DrawerContext.Provider value={{ isDrawerOpen, drawerOptions, toggleDrawerOpen, setDrawerOptions: handleSetDrawerOptions }}>
+      {children}
+    </DrawerContext.Provider>
+  );
 };
