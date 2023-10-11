@@ -48,9 +48,7 @@ export const FerramentasDaListagem: FC<IFerramentasDaListagemProps> = ({
             variant='contained'
             onClick={aoClicarEmNovo}
             endIcon={<Icon>add</Icon>}
-          >
-            {textoBotaoNovo}
-          </Button>
+          >{textoBotaoNovo}</Button>
         )}
       </Box>
     </Box>
