@@ -61,6 +61,7 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
       component={Paper}
     >
 
+      { /* Botão de salvar */ }
       {mostrarBotaoSalvarCarregando ? (
         <Skeleton width={110} height={60}/>
       ) : mostrarBotaoSalvar  && (
@@ -77,6 +78,7 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
         </Button>
       )}
 
+      { /* Botão de salvar e fechar */ }
       {!mdDown && (
         mostrarBotaoSalvarEFecharCarregando ? (
           <Skeleton width={180} height={60}/>
@@ -94,7 +96,8 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
           </Button>
         )
       )}
-      
+
+      { /* Botão de apagar */ }
       {mostrarBotaoApagarCarregando ? (
         <Skeleton width={110} height={60}/>
       ) : mostrarBotaoApagar && (
@@ -112,6 +115,7 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
         </Button>
       )}
       
+      { /* Botão de novo */ }
       {!smDown && (
         mostrarBotaoNovoCarregando ? (
           <Skeleton width={110} height={60}/>
@@ -130,7 +134,7 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
         )
       )}
 
-      {
+      { // Divider
         (
           mostrarBotaoVoltar && 
           (mostrarBotaoNovo || mostrarBotaoApagar || mostrarBotaoSalvar || mostrarBotaoSalvarEFechar)
@@ -139,6 +143,7 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
         )
       }
 
+      { /* Botão de voltar */ }
       {mostrarBotaoVoltarCarregando ? (
         <Skeleton width={110} height={60}/>
       ) : mostrarBotaoVoltar && (
