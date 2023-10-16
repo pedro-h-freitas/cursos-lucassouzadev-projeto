@@ -8,19 +8,19 @@ interface IFerramentasDeDetalhe {
   mostrarBotaoVoltar?: boolean;
   mostrarBotaoApagar?: boolean;
   mostrarBotaoSalvar?: boolean;
-  mostrarBotaoSalvarEFechar?: boolean;
+  mostrarBotaoSalvarEVoltar?: boolean;
 
   mostrarBotaoNovoCarregando?: boolean;
   mostrarBotaoVoltarCarregando?: boolean;
   mostrarBotaoApagarCarregando?: boolean;
   mostrarBotaoSalvarCarregando?: boolean;
-  mostrarBotaoSalvarEFecharCarregando?: boolean;
+  mostrarBotaoSalvarEVoltarCarregando?: boolean;
 
   aoClicarEmNovo?: () => void;
   aoClicarEmVoltar?: () => void;
   aoClicarEmApagar?: () => void;
   aoClicarEmSalvar?: () => void;
-  aoClicarEmSalvarEFechar?: () => void;
+  aoClicarEmSalvarEVoltar?: () => void;
 }
 
 export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
@@ -30,19 +30,19 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
   mostrarBotaoVoltar = true,
   mostrarBotaoApagar = true,
   mostrarBotaoSalvar = true,
-  mostrarBotaoSalvarEFechar = false,
+  mostrarBotaoSalvarEVoltar = false,
 
   mostrarBotaoNovoCarregando = false,
   mostrarBotaoVoltarCarregando = false,
   mostrarBotaoApagarCarregando = false,
   mostrarBotaoSalvarCarregando = false,
-  mostrarBotaoSalvarEFecharCarregando = false,
+  mostrarBotaoSalvarEVoltarCarregando = false,
 
   aoClicarEmNovo,
   aoClicarEmVoltar,
   aoClicarEmApagar,
   aoClicarEmSalvar,
-  aoClicarEmSalvarEFechar
+  aoClicarEmSalvarEVoltar
 
 }) => {
   const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
@@ -80,14 +80,14 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
 
       { /* Botão de salvar e fechar */ }
       {!mdDown && (
-        mostrarBotaoSalvarEFecharCarregando ? (
+        mostrarBotaoSalvarEVoltarCarregando ? (
           <Skeleton width={180} height={60}/>
-        ) : mostrarBotaoSalvarEFechar && (
+        ) : mostrarBotaoSalvarEVoltar && (
           <Button
             color='primary'
             disableElevation
             variant='outlined'
-            onClick={aoClicarEmSalvarEFechar}
+            onClick={aoClicarEmSalvarEVoltar}
             startIcon={<Icon>save</Icon>}
           >
             <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
@@ -137,7 +137,7 @@ export const FerramentasDeDetalhe: FC<IFerramentasDeDetalhe> = ({
       { // Divider
         (
           mostrarBotaoVoltar && 
-          (mostrarBotaoNovo || mostrarBotaoApagar || mostrarBotaoSalvar || mostrarBotaoSalvarEFechar)
+          (mostrarBotaoNovo || mostrarBotaoApagar || mostrarBotaoSalvar || mostrarBotaoSalvarEVoltar)
         ) && (
           <Divider variant='middle' orientation='vertical' />
         )
